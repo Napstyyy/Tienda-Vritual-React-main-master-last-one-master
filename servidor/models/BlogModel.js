@@ -10,7 +10,8 @@ const BlogModel = db.define ('inventories',{
     img2: {type: DataTypes.TEXT},
     img3: {type: DataTypes.TEXT},
     stockMax: {type: DataTypes.INTEGER},
-    stockMin: {type: DataTypes.INTEGER}
+    stockMin: {type: DataTypes.INTEGER},
+    stock: {type: DataTypes.INTEGER}
 });
 
 export default BlogModel;

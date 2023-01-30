@@ -84,11 +84,11 @@ export const bookProduct = async (req, res) => {
 const updateContent = async (product, quantity) => {
     const stock = await BlogModel.findAll({
         attributes: ['id', 'stock'],
-        where:{ id: Number(product) }
+        where:{ id: product }
     })
     console.log(typeof(product));
     await BlogModel.update({stock: stock[0].dataValues.stock - quantity[product]}, {
-        where: {id: Number(product)}
+        where: {id: product}
     })
     // if (productMinStock[product].stockMin >= stock[0].dataValues.stock - quantity[product]){
     //     sendMail({id: product, name: productMinStock[product].name});
