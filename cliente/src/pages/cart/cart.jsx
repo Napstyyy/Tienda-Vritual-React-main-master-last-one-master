@@ -26,9 +26,21 @@ export const Cart = () => {
 
     const buy = async (e) => {
         e.preventDefault();
-        await axios.put(URI + 'buy', cartItems)
+        console.log(cartItems);
+        await axios.put(URI + 'buy', {
+            "1": cartItems[1],
+            "2": cartItems[2],
+            "3": cartItems[3],
+            "4": cartItems[4],
+            "5": cartItems[5],
+            "6": cartItems[6],
+            "7": cartItems[7],
+            "8": cartItems[8],
+            "9": cartItems[9],
+            "10": cartItems[10],
+        })
         .then((res) => {
-            console.log(res);
+            alert(res);
         }).catch((err) => {
             alert(err.message)
         });

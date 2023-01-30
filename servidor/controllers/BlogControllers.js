@@ -1,7 +1,9 @@
 //importamos el modelo
 
 import BlogModel from "../models/BlogModel.js";
-import { productsStock } from "../main.js";
+import { productsStock, productMinStock } from "../main.js";
+import { sendMail } from "../mail/mail.js";
+
 //mostrar todos los registros
 export const getAllBlogs = async (req,res) => {
     try {
@@ -86,18 +88,18 @@ const updateContent = async (product, quantity) => {
         attributes: ['id', 'stock'],
         where:{ id: product }
     })
-    console.log(typeof(product));
+    console.log(quantity);
     await BlogModel.update({stock: stock[0].dataValues.stock - quantity[product]}, {
         where: {id: product}
     })
-    // if (productMinStock[product].stockMin >= stock[0].dataValues.stock - quantity[product]){
-    //     sendMail({id: product, name: productMinStock[product].name});
-    // }
+    if (productMinStock[product].stockMin >= (stock[0].dataValues.stock - quantity[product])){
+        sendMail({id: product, produtName: productMinStock[product].productName});
+    }
 }
 
 export const buyProducts = async (req, res) => {
     try {
-        console.log(req.body);
+        console.log(typeof(req.body));
         Object.keys(req.body).forEach(product => updateContent(product, req.body));
         res.json("Successful purchase");
     } catch (error) {

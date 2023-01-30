@@ -26,7 +26,7 @@ app.listen(PORT, ()=>{
 })
 
 const products = await BlogModel.findAll({
-    attributes: ['id', 'stock']
+    attributes: ['id', 'stock', 'stockMin', 'productName']
 })
 
 
@@ -36,8 +36,8 @@ products.forEach(product => {
     productsStock[product.dataValues.id] = product.dataValues.stock;
 });
 products.forEach(product => {
-    productMinStock[product.dataValues.id] = {stockMin: product.dataValues.stockMin, name: product.dataValues.name};
+    productMinStock[product.dataValues.id] = {stockMin: product.dataValues.stockMin, productName: product.dataValues.productName};
 });
-
+console.log(productMinStock);
 export {productsStock, productMinStock};
 
