@@ -93,7 +93,7 @@ const updateContent = async (product, quantity) => {
         where: {id: product}
     })
     if (productMinStock[product].stockMin >= (stock[0].dataValues.stock - quantity[product])){
-        sendMail({id: product, produtName: productMinStock[product].productName});
+        sendMail({id: product});
     }
 }
 
