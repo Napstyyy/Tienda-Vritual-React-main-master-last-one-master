@@ -39,5 +39,5 @@ products.forEach(product => {
     productMinStock[product.dataValues.id] = {stockMin: product.dataValues.stockMin, productName: product.dataValues.productName};
 });
 console.log(productMinStock);
-export {productsStock, productMinStock};
+export {productsStock, productMinStock};//exportation
 

@@ -34,7 +34,6 @@ const Register = () => {
 
     const store = async (e) => {
         e.preventDefault();
-        console.log('ingresando');
         await axios.post(URI, {username: name, password: password, adress: adress, telephone: telephone, email: email });
         navigateLogin();
     }
